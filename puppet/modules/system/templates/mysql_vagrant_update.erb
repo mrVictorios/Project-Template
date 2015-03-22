@@ -1,0 +1,27 @@
+#!/bin/bash
+
+mysqlpassword="<%=@mysql_password%>"
+database="<%=@mysql_database%>"
+
+mysql=$(dpkg --get-selections | grep -c mysql)
+
+if [ ${mysql} -eq 0 ];
+then
+    echo "mysql not installed"
+    exit
+fi
+
+echo "mysql installed update database"
+
+dbcheck=$(mysql -u root -p${mysqlpassword} -e "SHOW DATABASES" | grep -c ${database})
+
+if [ ${dbcheck} -eq 0 ];
+then
+    echo "database not available"
+    exit
+fi
+
+echo "database ${database} available"
+echo "update database"
+
+echo $(mysql -u root -p${mysqlpassword} ${database} < /vagrant/database/development.sql)

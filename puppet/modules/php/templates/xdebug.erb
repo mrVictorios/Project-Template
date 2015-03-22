@@ -1,0 +1,9 @@
+[Debug]
+<% if @module_path != false %>
+    zend_extension             = /usr/lib/php5/<%=@module_path%>/xdebug.so
+<% end %>
+xdebug.remote_enable       = <%=@remote_enable%>
+xdebug.remote_handler      = <%=@remote_handler%>
+xdebug.remote_port         = <%=@remote_port%>
+xdebug.remote_autostart    = <%=@remote_autostart%>
+xdebug.remote_connect_back = <%=@remote_connect_back%>
