@@ -13,7 +13,7 @@ class { "mysql"  : stage => main }
 ### configuration
 
 $mysql_database = 'test'
-$mysql_password = 'testsystem'
+$mysql_password = 'vagrant'
 
 # apache
 

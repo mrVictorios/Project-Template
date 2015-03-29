@@ -5,26 +5,24 @@ define php5::xdebug(
   $remote_autostart    = true,
   $remote_connect_back = true) {
 
-  $module_path = false
-
   package { "php5-xdebug":
     require => Package['php5-dev']
   }
 
-  exec { "get php extension dictionary for xdebug":
-    command   => 'php-config --extension-dir',
-    require   => Package['php5', 'php5-dev', 'php5-xdebug'],
-    logoutput => $module_path
+  file { "/etc/php5/mods-available/xdebug.ini":
+    ensure  => present,
+    content => template("php5/xdebug.erb"),
+    require => Package['php5', 'php5-xdebug'],
   }
 
-  file { "/etc/php5/mods-available/xdebug.ini":
-    ensure      => present,
-    content     => template("php5/xdebug.erb"),
-    require     => [Package['php5','php5-xdebug'], Exec['get php extension dictionary for xdebug']],
+  exec { "set xdebug path":
+    command => "/bin/bash -c \"export phpextension=$(php-config --extension-dir); echo \"zend_extension = \\\${phpextension}/xdebug.so\" >> /etc/php5/mods-available/xdebug.ini\"",
+    require => File['/etc/php5/mods-available/xdebug.ini']
   }
 
   php5::enmod { "enable xdebug":
     modulename => 'xdebug',
-    notify     => Service['apache2']
+    notify     => Service['apache2'],
+    require    => Exec['set xdebug path']
   }
 }
