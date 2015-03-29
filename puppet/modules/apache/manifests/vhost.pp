@@ -11,12 +11,6 @@ define apache::vhost(
   $vhostloglevel     = "warn") {
 
   if(!$ssl_only) {
-    file { ['/etc/apache2/sites-available']:
-      ensure  => directory,
-      before  => File["/etc/apache2/sites-available/${servername}.conf"],
-      require => Package["apache2"]
-    }
-
     file { "/etc/apache2/sites-available/${servername}.conf":
       ensure  => present,
       content => template("apache/vhost.erb"),
@@ -27,12 +21,6 @@ define apache::vhost(
 
   if($ssl or $ssl_only) {
     $port = $ssl_port
-
-    file { ['/etc/apache2/sites-available']:
-      ensure  => directory,
-      before  => File["/etc/apache2/sites-available/${servername}-ssl.conf"],
-      require => Package["apache2"]
-    }
 
     file { "/etc/apache2/sites-available/${servername}-ssl.conf":
       ensure  => present,
@@ -46,7 +34,7 @@ define apache::vhost(
     }
   }
 
-  apache::ensite { "enable vhost":
+  apache::ensite { "enable vhost ${servername}":
     site => $servername
   }
 }

@@ -7,7 +7,7 @@ stage { 'update' : before => Stage['main'] }
 ### classes
 class { "system" : stage => update }
 class { "apache" : stage => main }
-class { "php"    : stage => main }
+class { "php5"   : stage => main }
 class { "mysql"  : stage => main }
 
 ### configuration
@@ -17,6 +17,12 @@ $mysql_password = 'testsystem'
 
 # apache
 
+apache::vhost { "vagrent":
+  servername => 'www.vagrant.local.de',
+  webmaster  => 'webmaster@domain.tld',
+  docroot    => '/var/www/vagrant/'
+}
+
 apache::vhost { "mysite":
   servername => 'www.mysite.de',
   webmaster  => 'webmaster@domain.tld',
@@ -24,7 +30,7 @@ apache::vhost { "mysite":
 
 # php
 
-php::xdebug      { "xdebug default"     : }
+php5::xdebug      { "xdebug default": }
 
 # mysql
 

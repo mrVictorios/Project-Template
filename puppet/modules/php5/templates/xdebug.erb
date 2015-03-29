@@ -1,6 +1,6 @@
 [Debug]
 <% if @module_path != false %>
-    zend_extension             = /usr/lib/php5/<%=@module_path%>/xdebug.so
+zend_extension             = <%=@module_path%>/xdebug.so
 <% end %>
 xdebug.remote_enable       = <%=@remote_enable%>
 xdebug.remote_handler      = <%=@remote_handler%>
