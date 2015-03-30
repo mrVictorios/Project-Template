@@ -1,7 +1,69 @@
 [Debug]
-xdebug.remote_enable       = <%=@remote_enable%>
-xdebug.remote_handler      = <%=@remote_handler%>
-xdebug.remote_idekey       = <%=@remote_idekey%>
-xdebug.remote_port         = <%=@remote_port%>
-xdebug.remote_autostart    = <%=@remote_autostart%>
-xdebug.remote_connect_back = <%=@remote_connect_back%>
+
+;remote
+
+xdebug.remote_enable             = <%=@remote_enable%>
+xdebug.remote_handler            = <%=@remote_handler%>
+xdebug.remote_port               = <%=@remote_port%>
+xdebug.remote_autostart          = <%=@remote_autostart%>
+xdebug.remote_connect_back       = <%=@remote_connect_back%>
+xdebug.remote_cookie_expire_time = <%=@remote_cookie_expire_time%>
+xdebug.remote_host               = <%=@remote_host%>
+xdebug.remote_log                = <%=@remote_log%>
+xdebug.remote_mode               = <%=@remote_mode%>
+
+; collect
+
+xdebug.collect_assignments       = <%=@collect_assignments%>
+xdebug.collect_includes          = <%=@collect_includes%>
+xdebug.collect_params            = <%=@collect_params%>
+xdebug.collect_return            = <%=@collect_return%>
+xdebug.collect_vars              = <%=@collect_vars%>
+
+; profiler
+
+xdebug.profiler_enable           = <%=@profiler_enable%>
+xdebug.profiler_enable_trigger   = <%=@profiler_enable_trigger%>
+xdebug.profiler_output_dir       = <%=@profiler_output_dir%>
+xdebug.profiler_output_name      = <%=@profiler_output_name%>
+xdebug.profiler_aggregate        = <%=@profiler_aggregate%>
+xdebug.profiler_append           = <%=@profiler_append%>
+
+; dump
+
+xdebug.dump.COOKIE               = <%=@dump_COOKIE%>
+xdebug.dump.ENV                  = <%=@dump_ENV%>
+xdebug.dump.FILES                = <%=@dump_FILES%>
+xdebug.dump.GET                  = <%=@dump_GET%>
+xdebug.dump.POST                 = <%=@dump_POST%>
+xdebug.dump.SESSION              = <%=@dump_SESSION%>
+xdebug.dump_globals              = <%=@dump_globals%>
+xdebug.dump_once                 = <%=@dump_once%>
+xdebug.dump_undefined            = <%=@dump_undefined%>
+
+; trace
+
+xdebug.trace_enable_trigger      = <%=@trace_enable_trigger%>
+xdebug.trace_format              = <%=@trace_format%>
+xdebug.trace_options             = <%=@trace_options%>
+xdebug.trace_output_dir          = <%=@trace_output_dir%>
+xdebug.trace_output_name         = <%=@trace_output_name%>
+
+; display
+
+xdebug.var_display_max_children  = <%=@var_display_max_children%>
+xdebug.var_display_max_data      = <%=@var_display_max_data%>
+xdebug.var_display_max_depth     = <%=@var_display_max_depth%>
+
+; misc
+
+xdebug.scream                    = <%=@scream%>
+xdebug.auto_trace                = <%=@auto_trace%>
+xdebug.show_exception_trace      = <%=@show_exception_trace%>
+xdebug.show_local_vars           = <%=@show_local_vars%>
+xdebug.show_mem_delta            = <%=@show_mem_delta%>
+xdebug.extended_info             = <%=@extended_info%>
+xdebug.coverage_enable           = <%=@coderage_enable%>
+xdebug.max_nesting_level         = <%=@max_nesting_level%>
+xdebug.overload_var_dump         = <%=@overload_var_dump%>
+xdebug.idekey                    = <%=@idekey%>
