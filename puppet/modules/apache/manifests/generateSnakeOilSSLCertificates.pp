@@ -5,6 +5,13 @@ define apache::generateSnakeOilSSLCertificates (
   $rootCaFilepath      = '/etc/ssl/private/snakeOil_ca-root.pem',
   $certificateFilepath = '/etc/ssl/private/snakeOil_certificate',
   $servername          = 'vagrant.local.de',
+  $counter             = 'DE',
+  $state               = 'Saxony',
+  $location            = 'Dresden',
+  $password            = 'vagrant',
+  $company             = 'example',
+  $email               = '',
+  $unit                = '',
   $expireDays          = 1024,
 )
 {
