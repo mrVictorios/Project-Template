@@ -19,17 +19,17 @@ $caFilepath          = '/etc/apache2/snakeOil_ca-key.pem'
 $rootCaFilepath      = '/etc/apache2/snakeOil_ca-root.pem'
 $certificateFilepath = '/etc/apache2/snakeOil_certificate'
 
-# apache
-
-apache::generateSnakeOilSSLCertificates { "default SSL Certificates":
+openssl::generateSSLCertificates { "default SSL Certificates":
   caFilepath          => $caFilepath,
   rootCaFilepath      => $rootCaFilepath,
-  certificateFilepath => $certificateFilepath
+  certificateFilepath => $certificateFilepath,
+  require             => Package['apache2'],
 }
+
+# apache
 
 apache::vhost { "vagrant":
   servername        => 'www.vagrant.local.de',
-  webmaster         => 'webmaster@domain.tld',
   docroot           => '/var/www/vagrant/',
   ssl               => true,
   ssl_cert_file     => "${certificateFilepath}-pub.pem",
