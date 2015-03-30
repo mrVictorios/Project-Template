@@ -12,27 +12,39 @@ class { "mysql"  : stage => main }
 
 ### configuration
 
-$mysql_database = 'test'
+$mysql_database = 'vagrant'
 $mysql_password = 'vagrant'
+
+$caFilepath          = '/etc/apache2/snakeOil_ca-key.pem'
+$rootCaFilepath      = '/etc/apache2/snakeOil_ca-root.pem'
+$certificateFilepath = '/etc/apache2/snakeOil_certificate'
 
 # apache
 
-apache::vhost { "vagrent":
-  servername => 'www.vagrant.local.de',
-  webmaster  => 'webmaster@domain.tld',
-  docroot    => '/var/www/vagrant/'
+apache::generateSnakeOilSSLCertificates { "default SSL Certificates":
+  caFilepath          => $caFilepath,
+  rootCaFilepath      => $rootCaFilepath,
+  certificateFilepath => $certificateFilepath
 }
 
-apache::vhost { "mysite":
-  servername => 'www.mysite.de',
-  webmaster  => 'webmaster@domain.tld',
+apache::vhost { "vagrant":
+  servername        => 'www.vagrant.local.de',
+  webmaster         => 'webmaster@domain.tld',
+  docroot           => '/var/www/vagrant/',
+  ssl               => true,
+  ssl_cert_file     => "${certificateFilepath}-pub.pem",
+  ssl_cert_key_file => "${certificateFilepath}-key.pem",
+}
+
+apache::enmod { "enable ssl":
+  mod => 'ssl'
 }
 
 # php
 
 php5::xdebug      { "xdebug default": }
 
-# mysql
+## mysql
 
 mysql::db_create { "create ${mysql_database}" : databasename   => $mysql_database }
 
@@ -42,7 +54,7 @@ system::mysql    { "use mysql autoupdate":
 }
 
 
-### high priority
+#### high priority
 
 mysql::import    { "import structure" :
   database => $mysql_database,

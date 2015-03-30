@@ -6,8 +6,8 @@ define apache::vhost(
   $ssl               = false,
   $ssl_only          = false,
   $ssl_port          = 443,
-  $ssl_cert_file     = '',
-  $ssl_cert_key_file = '',
+  $ssl_cert_file     = '/etc/ssl/certs/ssl-cert-snakeoil.pem',
+  $ssl_cert_key_file = '/etc/ssl/private/ssl-cert-snakeoil.key',
   $vhostloglevel     = "warn") {
 
   if(!$ssl_only) {
@@ -20,11 +20,9 @@ define apache::vhost(
   }
 
   if($ssl or $ssl_only) {
-    $port = $ssl_port
-
     file { "/etc/apache2/sites-available/${servername}-ssl.conf":
       ensure  => present,
-      content => template("apache/vhost.erb"),
+      content => template("apache/vhost-ssl.erb"),
       require => Package['apache2'],
       notify  => Service['apache2']
     }

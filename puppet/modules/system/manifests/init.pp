@@ -8,7 +8,7 @@ class system
     command => "${packageManager} update"
   }
 
-  package {['mc','vim','htop']:
+  package {['mc','vim','htop', 'openssl', 'ssl-cert']:
     ensure  => present,
     require => Exec["update sources ${operatingsystem}"]
   }
