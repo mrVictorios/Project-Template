@@ -69,15 +69,15 @@ mysql::import    { "import data dump" :
   database => $mysql_database,
   filepath => '/vagrant/database/dump.sql'
 }
-#mysql::import    { "update data" :
-#  database => $mysql_database,
-#  filepath => '/vagrant/database/development.sql'
-#}
+mysql::import    { "update data" :
+  database => $mysql_database,
+  filepath => '/vagrant/database/development.sql'
+}
 
 mysql::root { "set mysql root" : password => "${mysql_password}"}
 
 Mysql::Db_create["create ${mysql_database}"] ->
 Mysql::Import['import structure']      ->
 Mysql::Import['import data dump']      ->
-#Mysql::Import['update data']           ->
+Mysql::Import['update data']           ->
 Mysql::Root['set mysql root']

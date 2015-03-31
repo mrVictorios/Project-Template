@@ -8,6 +8,8 @@
 6. SSL
 7. Misc
 
+### Version 1.0
+
 ### Description
 
 Simple Vagrant Puppet project template for development.
@@ -24,11 +26,9 @@ Simple Vagrant Puppet project template for development.
     ! configuration not complete
     ! enable site automatic
     
-    
     Parameter:
     
     name                default value
-    
     servername        = "www.vagrant.local.de",
     port              = 80,
     docroot           = "/var/www",
@@ -184,6 +184,24 @@ Simple Vagrant Puppet project template for development.
       certificateFilepath => '/etc/ssl/private/snakeOil_certificate'
       require             => Package['apache2'],
     }
+
+### System
+#### enable db autoupdate
+    Description:
+    
+     import development.sql into database when virtual-machine boots.
+
+    Parameter:
+    
+    name             value
+    mysql_password = undefined
+    mysql_database = undefined
+    
+    system::mysql    { "use mysql autoupdate":
+      mysql_password => '123456',
+      mysql_database => 'vagrant'
+    }
+
 
 ### Misc
 #### Connect to MySql over client
