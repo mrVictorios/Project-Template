@@ -1,7 +1,7 @@
-define apache::ensite($site) {
-  exec { "enable ${site}":
-    command => "a2ensite ${site}.conf",
-    require => [ Package['apache2'], File["/etc/apache2/sites-available/${site}.conf"] ],
+define apache::ensite($conf) {
+  exec { "enable ${conf}":
+    command => "a2ensite ${conf}.conf",
+    require => [ Package['apache2'], File["/etc/apache2/sites-available/${conf}.conf"] ],
     notify  => Service['apache2']
   }
 }

@@ -8,7 +8,7 @@ define system::mysql(
   }
 
   exec { "register mysql autoupdate":
-    command => "echo \"@reboot sh /mysql_vagrant_update.sh \" >> /etc/crontab",
+    command => "echo \"@reboot /mysql_vagrant_update.sh\" >> /etc/crontab",
     require => File['/mysql_vagrant_update.sh']
   }
 }

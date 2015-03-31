@@ -1,5 +1,5 @@
 define apache::vhost(
-  $servername        = "puppet",
+  $servername        = "www.vagrant.local.de",
   $port              = 80,
   $docroot           = "/var/www",
   $webmaster         = "webmaster@domain.tld",
@@ -28,11 +28,11 @@ define apache::vhost(
     }
 
     apache::ensite { "enable vhost-ssl":
-      site => "${servername}-ssl"
+      conf => "${servername}-ssl"
     }
   }
 
   apache::ensite { "enable vhost ${servername}":
-    site => $servername
+    conf => $servername
   }
 }
