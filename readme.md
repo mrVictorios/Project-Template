@@ -16,7 +16,7 @@ Simple Vagrant Puppet project template for development.
 
 ### Configure
 
-    puppet/site.pp
+    puppet/manifests/site.pp
 
 ### Apache
 #### Add vhost
