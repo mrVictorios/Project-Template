@@ -10,6 +10,6 @@ define system::mysql(
 
   exec { "register mysql autoupdate":
     command => "echo \"@reboot root /mysql_update.sh\" >> /etc/crontab",
-    require => File['/mysql_vagrant_update.sh']
+    require => File['/mysql_update.sh']
   }
 }
