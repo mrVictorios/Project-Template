@@ -20,7 +20,6 @@ class { "php5"   : stage => main }
 class { "mysql"  : stage => main }
 
 ### configuration
-
 $servername     = 'www.vagrant.local'
 
 $mysql_dump_path = '/vagrant/puppet/database/mysql'
@@ -51,7 +50,6 @@ openssl::generateSSLCertificates { "default SSL Certificates":
 }
 
 # apache
-
 apache::vhost { "add vhost ${servername}":
   servername        => $servername,
   ssl               => true,
@@ -70,11 +68,9 @@ package { "php5-mysql":
 php5::xdebug      { "install and configure xdebug": }
 
 ## mysql
-
 mysql::db_create { "create ${mysql_database}" : databasename   => $mysql_database }
 
 #### dump import
-
 mysql::import    { "import structure" :
   database => $mysql_database,
   filepath => "${mysql_dump_path}/structure.sql"

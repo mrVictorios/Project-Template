@@ -10,7 +10,7 @@
 ## Description
 
 Simple Vagrant Puppet project templates for development. 
-This Template include typical Project configurations, like Apache, PHP with MySql or Mongo.
+This Template include typical Project configurations, like Apache, PHP with MySql or MongoDB.
 
 ## Requirements
 
@@ -43,7 +43,7 @@ end
 #### Available templates
 
 - Apache PHP MySql <-- default configuration
-- Apache PHP Mongo
+- Apache PHP MongoDB
     
 some other will follow    
 

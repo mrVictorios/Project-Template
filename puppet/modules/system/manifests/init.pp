@@ -4,6 +4,10 @@ class system
     'Debian', 'Ubuntu': { $packageManager = 'apt-get' }
   }
 
+  exec {'locale-gen de_DE.UTF-8':
+    command => 'locale-gen de_DE.UTF-8'
+  }
+
   exec { "update sources ${operatingsystem}":
     command => "${packageManager} update"
   }

@@ -14,13 +14,12 @@ Exec { path => [ "/usr/local/sbin", "/usr/local/bin", "/usr/sbin", "/usr/bin", "
 stage { 'update' : before => Stage['main'] }
 
 ### modules
-class { "system" : stage => update }
-class { "apache" : stage => main }
-class { "php5"   : stage => main }
-class { "mongo"  : stage => main }
+class { "system"   : stage => update }
+class { "mongodb"  : stage => main }
+class { "apache"   : stage => main }
+class { "php5"     : stage => main }
 
 ### configuration
-
 $servername     = 'www.vagrant.local'
 
 system::copy { "copy project":
@@ -48,7 +47,6 @@ openssl::generateSSLCertificates { "default SSL Certificates":
 }
 
 # apache
-
 apache::vhost { "add vhost ${servername}":
   servername        => $servername,
   ssl               => true,
@@ -66,10 +64,14 @@ package { "php5-mongo":
 
 php5::xdebug      { "install and configure xdebug": }
 
-#mongo
-mongo::import  { "import test dump":
+# mongo
+mongodb::import  { "import test dump":
   database => 'test',
-  filepath => '/vagrant/puppet/database/mongo/dump/test'
+  filepath => '/vagrant/puppet/database/mongodb/dump/test'
 }
 
-mongo::addUser { "mongo user": }
+mongodb::add_user { "mongo user": }
+
+Package['mongodb']                 ->
+Mongodb::Add_user['mongo user']    ->
+Mongodb::Import['import test dump']

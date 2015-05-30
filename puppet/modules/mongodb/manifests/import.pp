@@ -1,9 +1,9 @@
-define mongo::import (
+define mongodb::import (
   $database = '',
   $filepath = '',
 ) {
   exec { "import mongo dump ${filepath} to ${database}":
     command => "mongorestore --drop -d ${database} ${filepath}",
-    require => [Service['mongodb'], Package['mongodb', 'mongodb-clients']]
+    require => Package['mongodb', 'mongodb-clients']
   }
 }
