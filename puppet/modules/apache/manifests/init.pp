@@ -5,7 +5,7 @@ class apache {
   }
 
   service { "apache2":
-    ensure => running,
+    ensure  => running,
     require => Package['apache2']
   }
 }

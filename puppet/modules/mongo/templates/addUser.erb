@@ -1,0 +1,11 @@
+use <%@database%>
+db.addUser(
+    {
+        user:"<%=@user%>",
+        pwd:"<%=@password%>",
+        roles:[
+            "dbAdminAnyDatabase",
+            "clusterAdmin"
+        ]
+    }
+)
