@@ -19,15 +19,15 @@ init(){
 
     if [ ! -d "$WORKINGDIR/src" ]
         then
-            cp "$SOURCE/src" "$WORKINGDIR"
+            cp -r "$SOURCE/src" "$WORKINGDIR"
     fi
     if [ ! -d "$WORKINGDIR/tests" ]
         then
-            cp "$SOURCE/tests" "$WORKINGDIR"
+            cp -r "$SOURCE/tests" "$WORKINGDIR"
     fi
     if [ ! -d "$WORKINGDIR/puppet" ]
         then
-            cp "$SOURCE/puppet" "$WORKINGDIR"
+            cp -r "$SOURCE/puppet" "$WORKINGDIR"
     fi
     if [ ! -f "$WORKINGDIR/Vagrantfile" ]
         then
