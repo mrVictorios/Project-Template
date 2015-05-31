@@ -10,6 +10,12 @@ echo "$WORKINGDIR"
 
 init(){
     SOURCE="$BASEDIR/.."
+
+    if [[ "$SOURCE" == *"vendor/bin"* ]]
+        then
+        SOURCE="./../manrog/project-template"
+    fi
+
     echo "$SOURCE"
     echo "Project Tempalte: $PROJECT_NAME"
     echo "initialize..."
