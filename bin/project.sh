@@ -13,7 +13,7 @@ init(){
 
     if [[ "$SOURCE" == *"vendor/bin"* ]]
         then
-        SOURCE="./../manrog/project-template"
+        SOURCE="$BASEDIR/manrog/project-template"
     fi
 
     echo "$SOURCE"
