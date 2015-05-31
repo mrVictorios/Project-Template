@@ -2,11 +2,24 @@
   "name": "manrog/project-template",
   "description": "project template",
   "minimum-stability": "dev",
+  "type":   "custom",
   "license": "free",
   "authors": [
     {
       "name": "Manuel Rogoll",
       "email": "rogoll89@gmail.com"
     }
-  ]
+  ],
+  "bin": [
+    "bin/project.sh",
+    "bin/project.bat"
+  ],
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.x-dev"
+    }
+  },
+  "support": {
+    "issues": "https://github.com/mrVictorios/Project-Template/issues"
+  }
 }
