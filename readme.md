@@ -1,12 +1,5 @@
 # Project Template
 
-1. Description
-2. Requirements
-3. Configure
-4. Misc
-
-## Version 1.0
-
 ## Description
 
 Simple Vagrant Puppet project templates for development. 
@@ -17,20 +10,32 @@ This Template include typical Project configurations, like Apache, PHP with MySq
 - Virtualbox <https://www.virtualbox.org>
 - Vagrant <https://www.vagrantup.com>
 
-## How to use? (short description)
+## Installation easy way (only on UNIX systems available)
 
-In the "puppet/manifests" you will find some templates you can use.
-To use a other configuration, replace the puppet manifest file in the Vagrantfile.
+use Composer
 
-Edit the template
+    "repositories": [
+        {
+          "type": "vcs",
+          "url":  "https://github.com/mrVictorios/Project-Template.git"
+        }
+      ],
+...
+      
+    "require": {
+        "manrog/project-template": "*"
+     }
 
-add to you "hosts" file
+1. run composer
+2. run ./vendor/bin/project.sh init "NAME OF THE VM"
+3. follow the introductions or configure by self
 
-type "vagrant up" in cli on project folder 
+## How to use? (short)
 
-when finish check it
+put you database dump into "pupper/database/$DB"
+refactor the templates on your requirements
 
-#### Vagrantfie
+#### Vagrantfile
 ```ruby
 ...
 config.vm.provision "puppet" do |puppet|

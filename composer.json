@@ -11,8 +11,7 @@
     }
   ],
   "bin": [
-    "bin/project.sh",
-    "bin/project.bat"
+    "bin/project.sh"
   ],
   "extra": {
     "branch-alias": {
