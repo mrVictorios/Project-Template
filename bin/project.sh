@@ -6,17 +6,14 @@ WORKINGDIR=$(pwd)
 BASEDIR=$(dirname $0)
 PROJECT_NAME=$2
 
-echo "$WORKINGDIR"
-
 init(){
     SOURCE="$BASEDIR/.."
 
     if [[ "$SOURCE" == *"vendor/bin"* ]]
         then
-        SOURCE="$BASEDIR/manrog/project-template"
+        SOURCE="$BASEDIR/../manrog/project-template"
     fi
 
-    echo "$SOURCE"
     echo "Project Tempalte: $PROJECT_NAME"
     echo "initialize..."
 
