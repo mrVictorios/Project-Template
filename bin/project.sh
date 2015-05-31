@@ -10,23 +10,23 @@ echo "$WORKINGDIR"
 
 init(){
     SOURCE="$BASEDIR/.."
-
+    echo "$SOURCE"
     echo "Project Tempalte: $PROJECT_NAME"
     echo "initialize..."
 
-    if [ ! -d "src" ]
+    if [ ! -d "$WORKINGDIR/src" ]
         then
             cp "$SOURCE/src" "$WORKINGDIR"
     fi
-    if [ ! -d "tests" ]
+    if [ ! -d "$WORKINGDIR/tests" ]
         then
             cp "$SOURCE/tests" "$WORKINGDIR"
     fi
-    if [ ! -d "puppet" ]
+    if [ ! -d "$WORKINGDIR/puppet" ]
         then
             cp "$SOURCE/puppet" "$WORKINGDIR"
     fi
-    if [ ! -f "Vagrantfile" ]
+    if [ ! -f "$WORKINGDIR/Vagrantfile" ]
         then
             cp "$SOURCE/Vagrantfile" "$WORKINGDIR"
     fi
